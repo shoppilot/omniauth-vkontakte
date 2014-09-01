@@ -60,7 +60,7 @@ module OmniAuth
           params = {
             :fields   => info_options,
             :lang     => lang_option,
-            :v        => API_VERSION,
+            # :v        => API_VERSION, # https://vk.com/dev/need_validation
           }
 
           result = access_token.get('/method/users.get', :params => params).parsed["response"]
@@ -97,7 +97,7 @@ module OmniAuth
       def info_options
         # http://vk.com/dev/fields
         fields = ['nickname', 'screen_name', 'sex', 'city', 'country', 'online', 'bdate', 'photo_50', 'photo_100', 'photo_200_orig']
-        fields.concat(options[:info_fields].split(',')) if options[:info_fields] 
+        fields.concat(options[:info_fields].split(',')) if options[:info_fields]
         return fields.join(',')
       end
 
